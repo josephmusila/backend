@@ -85,12 +85,12 @@ WSGI_APPLICATION = 'fua.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fua',
-        'HOST': 'localhost',
-        'USER': 'admin',
-        'PASSWORD':'Musila@01'
-    
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fua', 
+        'USER': 'admin', 
+        'PASSWORD': 'Musila@01',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
