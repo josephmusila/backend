@@ -15,6 +15,8 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 from decouple import config
+import cloudinary
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'rest_framework.authtoken',
-    'whitenoise.runserver_nostatic'
+    'cloudinary',
+    'cloudinary_storage',
     
 ]
 
@@ -134,6 +137,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "dxz6yaukp",
+    'API_KEY': "716244813849766",
+    'API_SECRET': "TP4xdyZPQJmvioXb3wTHoaCPYsU",
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
