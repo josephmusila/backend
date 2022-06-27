@@ -199,7 +199,7 @@ class SearchResultWorker(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         print( kwargs['search'])
-        SearchResultWorker.queryset=User.objects.filter(Q(location__icontains=kwargs['search']))[:1].get()
+        SearchResultWorker.queryset=User.objects.filter(Q(location__icontains=kwargs['search']))
                                                  
         
         return self.list(request, *args, **kwargs)

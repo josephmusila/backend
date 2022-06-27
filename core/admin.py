@@ -5,7 +5,7 @@ from . import models
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display=("id","first_name","last_name","email",)
+    list_display=("id","first_name","last_name","email","location",)
 
 admin.site.register(models.User,UserAdmin)
 
