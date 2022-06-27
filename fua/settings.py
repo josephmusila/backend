@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'rest_framework.authtoken',
+    'whitenoise.runserver_nostatic'
     
 ]
 
