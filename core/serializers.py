@@ -34,6 +34,7 @@ class UserSerializer(serializers.Serializer):
     password=serializers.CharField(write_only=True)
     avatar=serializers.ImageField()
     location=serializers.CharField()
+    account_type=serializers.CharField()
 
 
     def to_internal_value(self, data):
@@ -56,5 +57,16 @@ class LoginSerializer(serializers.ModelSerializer):
         fields=("email","password","token")
 
         read_only_fields=['token']
+
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+
+    class Meta:
+        model=models.UserNotifications
+        fields=("notification","user","date_created")
+        
+
 
 # http://192.168.1.101:8000/api/user/ -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywiZXhwIjoxNjU1ODE2Nzk4LCJpYXQiOjE2NTU3MzAzOTh9.1KIRe6B0xIRIAaglBzsZyJ-4iH0u2dRD3lc5hepO6GA'

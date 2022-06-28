@@ -24,6 +24,7 @@ class UserDataClass:
     phone: str
     avatar:str
     email: str
+    accountType:str
     location:str
     password: str = None
     id: int=None
@@ -31,10 +32,10 @@ class UserDataClass:
 
     @classmethod
     def from_instance(cls,user:"User")->"UserDataClass":
-        return cls(first_name=user.first_name,last_name=user.last_name,email=user.email,phone=user.phone,id=user.id,avatar=user.avatar,location=user.location)
+        return cls(first_name=user.first_name,last_name=user.last_name,email=user.email,phone=user.phone,id=user.id,avatar=user.avatar,location=user.location,account_type=user.account_type)
 
 def create_user(user:"UserDataClass") ->"UserDataClass":
-    instance=models.User(first_name=user.first_name,last_name=user.last_name,email=user.email,phone=user.phone,avatar=user.avatar,location=user.location)
+    instance=models.User(first_name=user.first_name,last_name=user.last_name,email=user.email,phone=user.phone,avatar=user.avatar,location=user.location,accountType=user.accountType)
 
     if user.password is not None:
         instance.set_password(user.password)

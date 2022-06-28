@@ -44,6 +44,7 @@ class User(auth_models.AbstractUser):
     phone=models.CharField(max_length=50)
     avatar=models.ImageField(upload_to="uploads",blank=True,null=True)
     location=models.CharField(max_length=255,blank=False,null=False)
+    account_type=models.CharField(max_length=20,verbose_name="accout-type")
     username=None
     
 
@@ -62,9 +63,18 @@ class User(auth_models.AbstractUser):
     #     return token
 
 
+    def __str__(self):
+        return  f'{self.first_name} {self.last_name}'
+
 class ImagesForSlide(models.Model):
     label=models.CharField(max_length=300,blank=True,null=True)
     image=models.ImageField(upload_to="uploads",blank=True,null=True)
+
+
+class UserNotifications(models.Model):
+    notification=models.TextField(max_length=500,blank=True,null=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    date_created=models.DateField(auto_now_add=True)
 
 
 

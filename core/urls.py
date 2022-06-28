@@ -8,9 +8,10 @@ urlpatterns = [
     path("user/<search>",apis.UserApi.as_view(),name="user"),
     path("logout/",apis.LogoutApi.as_view(),name="logout"),
     path('search/<search>',apis.SearchResultWorker.as_view(),),
-    path("test/<search>",apis.Muser,name="test"),
+    # path("test/<search>",apis.Muser,name="test"),
     path("image/",apis.AddImage.as_view(),name="image"),
     path("listImage/",apis.imagesList,name="listImages"),
+    path("notifications/<id>",apis.NotificationsView.as_view(),name="notifications"),
 
 
     #payment gateways

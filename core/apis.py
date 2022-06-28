@@ -10,7 +10,7 @@ import datetime
 import jwt
 from rest_framework.generics import ListAPIView
 # from .serializers import GetUserSerializer
-from .models import ImagesForSlide, MpesaPayment, User
+from .models import ImagesForSlide, MpesaPayment, User,UserNotifications
 from django.db.models import Q
 from rest_framework import generics
 from django.contrib.auth import authenticate
@@ -184,14 +184,19 @@ def user_api(request,search):
     # data = {'sample_data': 123}
     # return Response(data, status=HTTP_200_OK)
 
-
-class Muser(ModelViewSet):
+class NotificationsView(generics.ListAPIView):
     queryset=User.objects.all()
-    serializer_class=user_serializer.CurrentUserSerializer
-    lookup_field="email"
+    serializer_class=user_serializer.NotificationSerializer
 
-    def get_serializer_context(self):
-        return {"request":self.request}
+    def get(self, request, *args, **kwargs):
+        print( kwargs['id'])
+        NotificationsView.queryset=UserNotifications.objects.filter(Q(user__id=kwargs['id']))
+                                                 
+        
+        return self.list(request, *args, **kwargs)
+
+
+
 
 class SearchResultWorker(generics.ListAPIView):
     queryset=User.objects.all()
@@ -203,7 +208,6 @@ class SearchResultWorker(generics.ListAPIView):
                                                  
         
         return self.list(request, *args, **kwargs)
-
 
 
 
