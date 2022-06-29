@@ -28,7 +28,7 @@ from rest_framework.viewsets import ModelViewSet,GenericViewSet
 import requests
 import json
 from requests.auth import HTTPBasicAuth
-from .mpesaCred import  MpesaAccessToken, LipanaMpesaPpassword
+# from .mpesaCred import  MpesaAccessToken, LipanaMpesaPpassword
 from django.http import HttpResponse, JsonResponse
 # class GetUser(ListAPIView):
 #     serializer_class=GetUserSerializer
