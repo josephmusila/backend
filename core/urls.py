@@ -16,8 +16,8 @@ urlpatterns = [
 
     #payment gateways
 
-    path("payments/mpesa",apis.getAccessToken,name="mpesa"),
-    path('payments/pay', apis.lipa_na_mpesa_online, name='lipa_na_mpesa'),
+    # path("payments/mpesa",apis.getAccessToken,name="mpesa"),
+    # path('payments/pay', apis.lipa_na_mpesa_online, name='lipa_na_mpesa'),
 
 
     # # customer to business urls
