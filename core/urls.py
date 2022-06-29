@@ -20,11 +20,11 @@ urlpatterns = [
     path('payments/pay', apis.lipa_na_mpesa_online, name='lipa_na_mpesa'),
 
 
-    # customer to business urls
-    path('c2b/register', apis.register_urls, name="register_mpesa_validation"),
-    path('c2b/confirmation', apis.confirmation, name="confirmation"),
-    path('c2b/validation', apis.validation, name="validation"),
-    path('c2b/callback', apis.call_back, name="call_back")
+    # # customer to business urls
+    # path('c2b/register', apis.register_urls, name="register_mpesa_validation"),
+    # path('c2b/confirmation', apis.confirmation, name="confirmation"),
+    # path('c2b/validation', apis.validation, name="validation"),
+    # path('c2b/callback', apis.call_back, name="call_back")
     
 
     # path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
