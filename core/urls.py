@@ -32,7 +32,7 @@ urlpatterns = [
     # path('c2b/callback', apis.call_back, name="call_back"),
     
 
-    path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
+    # path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
     path('logged/', apis.LoggedInUserView.as_view())
 ]
                                                                                                                                                                                                                  
