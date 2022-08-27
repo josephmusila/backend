@@ -69,3 +69,21 @@ def create_image(image:"ImageService")->"ImageService":
     instance=models.ImagesForSlide(label=image.label,image=image.image)
     instance.save()
     return ImageService.from_instance(instance)
+
+
+class RequestWorkService:
+    id: int=None
+    user:str
+    work_description:str
+    date_created:str=None
+    
+    @classmethod
+    def from_instance(cls,work:"models.RequestForService")->"RequestWorkService":
+        return cls(id=work.id,user=work.user,work_description=work.work_description,date_created=work.date_created)
+
+def create_work_request(work:"RequestWorkService")->"RequestWorkService":
+    instance=models.RequestForService(user=work.user)
+    instance.save()
+    return RequestWorkService.from_instance(instance)
+
+

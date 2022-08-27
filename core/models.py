@@ -6,6 +6,7 @@ import jwt
 from datetime import datetime
 from datetime import timedelta
 from django.conf import settings
+from django.db.models.signals import post_save
 
 
 class UserManager(auth_models.BaseUserManager):
@@ -64,7 +65,7 @@ class User(auth_models.AbstractUser):
 
 
     def __str__(self):
-        return  f'{self.first_name} {self.last_name}'
+        return  self.email
 
 class ImagesForSlide(models.Model):
     label=models.CharField(max_length=300,blank=True,null=True)
@@ -72,10 +73,62 @@ class ImagesForSlide(models.Model):
 
 
 class UserNotifications(models.Model):
+  
     notification=models.TextField(max_length=500,blank=True,null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    date_created=models.DateField(auto_now_add=True)
+    date_created=models.DateTimeField(auto_now_add=True)
 
+
+# request for services
+
+class VerificationStatus(models.Model):
+    status=models.CharField(max_length=50,blank=False)
+
+    def __str__(self) -> str:
+        return self.status
+class RequestForService(models.Model):
+
+   
+    requested_by=models.EmailField(max_length=100)
+    location=models.TextField(max_length=200,null=True,blank=True)
+    
+    work_description=models.TextField(max_length=500)
+    job_date=models.DateField()
+    date_requested=models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    verification=models.ForeignKey(VerificationStatus,on_delete=models.DO_NOTHING,null=True,blank=True)
+    assigned_to=models.ForeignKey(User,on_delete=models.DO_NOTHING,blank=True,null=True)
+    assigned_on=models.DateTimeField(null=True,blank=True)
+
+
+
+    def __str__(self):
+        return self.work_description
+
+    def save(self, *args, **kwargs):
+        try:
+            self.verification
+        except:
+            self.verification = VerificationStatus.objects.first()
+        super().save(*args, **kwargs)
+def status_post_save(sender,instance,created, *args,**kwargs):
+    instance.verification= VerificationStatus.objects.first()
+
+    if created:
+        instance.save()
+
+post_save.connect(status_post_save,sender=RequestForService)
+
+
+class ServiceAssignment(models.Model):
+    service=models.ForeignKey(RequestForService,on_delete=models.DO_NOTHING)
+    worker=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    date_assigned=models.DateTimeField(auto_now_add=True)
+
+
+    
+
+# class JobAssignment(models.Model):
+#     requested_by=models.ForeignKey()
 
 
 # payments models

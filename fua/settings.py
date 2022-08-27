@@ -168,3 +168,8 @@ MEDIA_URL = "/files/"
 
 
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
+    
+}

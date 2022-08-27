@@ -13,6 +13,11 @@ urlpatterns = [
     path("listImage/",apis.imagesList,name="listImages"),
     path("notifications/<id>",apis.NotificationsView.as_view(),name="notifications"),
 
+    # job request urls
+
+    path("workerRequest/",apis.Req.as_view(),name="request-worker"),
+    path("request_status/<requested_by>",apis.GetRequestForService.as_view(),name="request_status"),
+
 
     #payment gateways
 
@@ -24,9 +29,10 @@ urlpatterns = [
     # path('c2b/register', apis.register_urls, name="register_mpesa_validation"),
     # path('c2b/confirmation', apis.confirmation, name="confirmation"),
     # path('c2b/validation', apis.validation, name="validation"),
-    # path('c2b/callback', apis.call_back, name="call_back")
+    # path('c2b/callback', apis.call_back, name="call_back"),
     
 
-    # path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
-    # path('logged/', apis.LoggedInUserView.as_view())
+    path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
+    path('logged/', apis.LoggedInUserView.as_view())
 ]
+                                                                                                                                                                                                                 

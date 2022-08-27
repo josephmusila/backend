@@ -42,6 +42,8 @@ class UserSerializer(serializers.Serializer):
 
         return services.UserDataClass(**data)
 
+
+
 class CurrentUserSerializer(serializers.ModelSerializer):
     model= models.User
 
@@ -63,10 +65,27 @@ class LoginSerializer(serializers.ModelSerializer):
 class NotificationSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
 
-    class Meta:
+    class Meta:                                                                                                                                                                                                                                                       
         model=models.UserNotifications
-        fields=("notification","user","date_created")
+        fields=("notification","user","date_created")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                      
+
+class RequestWorkerSerializer(serializers.ModelSerializer):
+     
+      class Meta:
+        # user=serializers.CharField(source='models.user.name')                                                                                                              
+        model=models.RequestForService
+        fields=("requested_by","work_description","job_date","location")
+
+
+class GetRequestSerializer(serializers.ModelSerializer):
+   
+    # assigned_to=serializers.StringRelatedField()
+    verification=serializers.StringRelatedField()
+    class Meta:                                                                                                                                                                                                                                                       
+        model=models.RequestForService
         
-
-
-# http://192.168.1.101:8000/api/user/ -H 'Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywiZXhwIjoxNjU1ODE2Nzk4LCJpYXQiOjE2NTU3MzAzOTh9.1KIRe6B0xIRIAaglBzsZyJ-4iH0u2dRD3lc5hepO6GA'
+        fields=("requested_by","location","work_description","job_date","date_requested","assigned_on","verification","assigned_to")
+        depth = 2  
+                                                                                                                                                                         
