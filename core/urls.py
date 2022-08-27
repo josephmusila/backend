@@ -33,6 +33,6 @@ urlpatterns = [
     
 
     # path("users/account=<str:email>/",apis.GetUser.as_view(),name="custuser"),
-    path('logged/', apis.LoggedInUserView.as_view())
+    # path('logged/', apis.LoggedInUserView.as_view())
 ]
                                                                                                                                                                                                                  
