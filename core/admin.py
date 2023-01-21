@@ -24,7 +24,7 @@ class NotificationAdmin(admin.ModelAdmin):
 
 
 class WorkRequest(admin.ModelAdmin):
-    list_display=("id","requested_by","work_description","job_date","date_requested","assigned_on","assigned_to","verification")
+    list_display=("id","requested_by","work_description","job_date","date_requested","assigned_on","assigned_to","fee","verification")
 
 
 class ServiceAssignmentAdmin(admin.ModelAdmin):

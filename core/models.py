@@ -96,6 +96,7 @@ class RequestForService(models.Model):
     job_date=models.DateField()
     date_requested=models.DateTimeField(auto_now_add=True,blank=True,null=True)
     verification=models.ForeignKey(VerificationStatus,on_delete=models.DO_NOTHING,null=True,blank=True)
+    fee=models.DecimalField(null=True,blank=True,decimal_places=2,max_digits=10)
     assigned_to=models.ForeignKey(User,on_delete=models.DO_NOTHING,blank=True,null=True)
     assigned_on=models.DateTimeField(null=True,blank=True)
 

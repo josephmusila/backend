@@ -26,6 +26,7 @@ class UserSerializer(serializers.Serializer):
     last_name=serializers.CharField()
     phone=serializers.CharField()
     email=serializers.EmailField(validators=[
+        
         UniqueValidator(
             queryset=models.User.objects.all(),
             message='A user with such email address already exists'
@@ -86,6 +87,6 @@ class GetRequestSerializer(serializers.ModelSerializer):
     class Meta:                                                                                                                                                                                                                                                       
         model=models.RequestForService
         
-        fields=("requested_by","location","work_description","job_date","date_requested","assigned_on","verification","assigned_to")
+        fields=("id","requested_by","fee","location","work_description","job_date","date_requested","assigned_on","verification","assigned_to")
         depth = 2  
                                                                                                                                                                          
