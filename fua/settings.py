@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'fua.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fua', 
-        'USER': 'admin', 
+        'NAME': 'vivatech_fua', 
+        'USER': 'vivatech_musila', 
         'PASSWORD': 'Musila@01',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'HOST': 'localhost', 
+        'PORT': '3306',
     }
 }
 
